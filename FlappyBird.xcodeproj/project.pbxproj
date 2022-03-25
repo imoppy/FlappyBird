@@ -14,6 +14,8 @@
 		E28EC74627E46656001B47A2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E28EC74527E46656001B47A2 /* Assets.xcassets */; };
 		E28EC74927E46656001B47A2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E28EC74727E46656001B47A2 /* LaunchScreen.storyboard */; };
 		E28EC75127E46AC2001B47A2 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = E28EC75027E46AC2001B47A2 /* GameScene.swift */; };
+		E28EC75327ED8DDE001B47A2 /* se.wav in Resources */ = {isa = PBXBuildFile; fileRef = E28EC75227ED8DDE001B47A2 /* se.wav */; };
+		E28EC75527ED911C001B47A2 /* damaged.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = E28EC75427ED911C001B47A2 /* damaged.mp3 */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +28,8 @@
 		E28EC74827E46656001B47A2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E28EC74A27E46656001B47A2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E28EC75027E46AC2001B47A2 /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
+		E28EC75227ED8DDE001B47A2 /* se.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = se.wav; sourceTree = "<group>"; };
+		E28EC75427ED911C001B47A2 /* damaged.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = damaged.mp3; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +70,8 @@
 				E28EC74527E46656001B47A2 /* Assets.xcassets */,
 				E28EC74727E46656001B47A2 /* LaunchScreen.storyboard */,
 				E28EC74A27E46656001B47A2 /* Info.plist */,
+				E28EC75227ED8DDE001B47A2 /* se.wav */,
+				E28EC75427ED911C001B47A2 /* damaged.mp3 */,
 			);
 			path = FlappyBird;
 			sourceTree = "<group>";
@@ -130,6 +136,8 @@
 			files = (
 				E28EC74927E46656001B47A2 /* LaunchScreen.storyboard in Resources */,
 				E28EC74627E46656001B47A2 /* Assets.xcassets in Resources */,
+				E28EC75527ED911C001B47A2 /* damaged.mp3 in Resources */,
+				E28EC75327ED8DDE001B47A2 /* se.wav in Resources */,
 				E28EC74427E46653001B47A2 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -21,7 +21,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     let wallCategory: UInt32 = 1 << 2       // 0...00100
     let scoreCategory: UInt32 = 1 << 3      // 0...01000
     let itemCategory: UInt32 = 1 << 4       // 0...10000
-    let itemScoreCategory: UInt32 = 1 << 5  // 0..100000
 
     // スコア用
     var score = 0
@@ -251,7 +250,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         // カテゴリー設定
         bird.physicsBody?.categoryBitMask = birdCategory
         bird.physicsBody?.collisionBitMask = groundCategory | wallCategory
-        bird.physicsBody?.contactTestBitMask = groundCategory | wallCategory | scoreCategory | itemScoreCategory
+        bird.physicsBody?.contactTestBitMask = groundCategory | wallCategory | scoreCategory | itemCategory
 
         // 衝突した時に回転させない
         bird.physicsBody?.allowsRotation = false
@@ -327,16 +326,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             items.addChild(itemSpriteNode)
             self.currentItem = itemSpriteNode
 
-            // スコアカウント用の透明なアイテムを作成
-            let itemScoreNode = SKNode()
-            itemScoreNode.position = CGPoint(x: 0, y: item_y)
-            // 透明なアイテムに物理体を設定する
-            itemScoreNode.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: itemSpriteNode.size.width, height: itemSpriteNode.size.height))
-            itemScoreNode.physicsBody?.categoryBitMask = self.itemScoreCategory
-            itemScoreNode.physicsBody?.isDynamic = false
-            // アイテムをまとめるノードに透明なアイテムを追加
-            items.addChild(itemScoreNode)
-
             // アイテムをまとめるノードにアニメーションを設定
             items.run(itemAnimation)
 
@@ -374,8 +363,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 userDefaults.set(bestScore, forKey: "BEST")
                 userDefaults.synchronize()
             }
-        } else if (contact.bodyA.categoryBitMask & itemScoreCategory) == itemScoreCategory || (contact.bodyB.categoryBitMask & itemScoreCategory) == itemScoreCategory {
+        } else if (contact.bodyA.categoryBitMask & itemCategory) == itemCategory || (contact.bodyB.categoryBitMask & itemCategory) == itemCategory {
             // アイテムスコアカウント用の透明な壁と衝突した
+            playSE(fileName: "se.wav")
+
             print("ItemScoreUp")
             itemScore += 1
             itemScoreLabelNode.text = "ItemScore:\(itemScore)"
@@ -394,6 +385,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             currentItem.run(remove)
         } else {
             // 壁か地面と衝突した
+
+            playSE(fileName: "damaged.mp3")
             print("GameOver")
 
             // スクロールを停止させる
@@ -475,6 +468,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         bestItemScoreLabelNode.horizontalAlignmentMode = SKLabelHorizontalAlignmentMode.left
         bestItemScoreLabelNode.text = "Best Item Score:\(bestItemScore)"
         self.addChild(bestItemScoreLabelNode)
-
+    }
+    
+    func playSE(fileName: String) {
+        let play = SKAction.playSoundFileNamed(fileName, waitForCompletion: false)
+        self.run(play)
     }
 }
